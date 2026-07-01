@@ -1,0 +1,50 @@
+--- SCENARIO C (Adverse Comms): DYNAMIC TRIGGER VERSION ---
+Fog onset randomly scheduled at step 295 (window (200, 350), ramp 50s, hold 150s)
+Congestion trigger: ENABLED (threshold 20.0% occupancy)
+Communication Impairment: Packet Loss Rate=50%, Max Latency=5s
+[step 297] AI-TCC issues new token: target=136.8 km/h (fog=0.04, congestion=0.00, occupancy=0.0%) [NEW EPISODE]
+[step 317] AI-TCC issues new token: target=104.8 km/h (fog=0.44, congestion=0.00, occupancy=0.0%)
+[step 337] AI-TCC issues new token: target=72.8 km/h (fog=0.84, congestion=0.00, occupancy=0.0%)
+[step 357] AI-TCC issues new token: target=60.0 km/h (fog=1.00, congestion=0.00, occupancy=0.0%)
+[step 497] AI-TCC issues new token: target=63.2 km/h (fog=0.96, congestion=0.00, occupancy=0.0%) [NEW EPISODE]
+[step 517] AI-TCC issues new token: target=95.2 km/h (fog=0.56, congestion=0.00, occupancy=0.0%)
+[step 537] AI-TCC issues new token: target=127.2 km/h (fog=0.16, congestion=0.00, occupancy=0.0%)
+[step 557] AI-TCC issues new token: target=140.0 km/h (fog=0.00, congestion=0.00, occupancy=0.0%)
+
+--- SIMULATION LOOP TERMINATED SUCCESSFULLY AT STEP 972 ---
+
+================================================================================
+=== SCENARIO C (Adverse Comms): DYNAMIC-TRIGGER VSL SUMMARY ===
+Total Simulation Steps: 972
+Final Throughput (Vehicles): 200
+Total Collisions (Overall): 0
+AI-TCC issued 8 token update(s) at steps: [297, 317, 337, 357, 497, 517, 537, 557]
+First trigger step (used for PRE/POST split): 297
+================================================================================
+
+--- Three-Phase Compliance, Safety & Flow Comparison ---
+                                Phase  Overspeed  TTC Fails  Avg Speed (km/h)  Speed Std Dev (m/s)
+      Phase 1 – Pre-fog (steps 0–296)          0          0            123.25                 7.57
+Phase 2 – Enforcement (steps 297–970)       2483          0             77.04                 7.78
+Phase 3 – Post-clearance (steps 971+)          0          0              0.00                 0.00
+
+--- SSG-AI VSL Compliance Assessment ---
+Total Non-Compliant Drivers Targeted (Types veryAggressive, aggressive): 100
+Unique Non-Compliant Drivers Subjected to Forced SSG-AI Enforcement: 31
+
+--- Communication Failure & Efficiency Metrics ---
+1. Total Tokens Sent (Attempts to Enforce, all episodes): 279
+2. Tokens Lost (Failed to Reach OBU): 128
+3. Tokens Successfully Received (Delayed/Undelayed): 151
+4. Actual Packet Loss Rate: 45.88%
+5. Total Collisions: 0
+6. Collision Immunity Index (CII): 100.00%
+
+================================================================================
+Decision log saved to C:\Users\Dell\Desktop\ssg_ai_sumo_sim_C\tcc_decision_log.csv - plot fog_severity / congestion_pct / active_target_kph over step for a figure showing the AI-TCC's live decisions.
+Conclusion: AI-TCC adjusted the enforced speed 8 time(s) in response to live fog/congestion signals (not a pre-scripted single drop), reaching a minimum of 60.0 km/h, with CII=100.00% across 128 lost tokens.
+
+Files written to: C:\Users\Dell\Desktop\ssg_ai_sumo_sim_C
+  - vsl_highway_log.csv (per-vehicle, per-step log)
+  - tcc_decision_log.csv (per-step AI-TCC decision log)
+  - tcc_run_summary.txt (this summary)
